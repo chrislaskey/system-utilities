@@ -36,7 +36,8 @@ Usage:
 ```
 
 The real world example would go to `/vagrant/puppet/modules` and execute
-`git pull github stable:stable` in each repository root.
+`git pull github stable:stable` from each git repository root within the
+`/vagrant/puppet/modules/*` root directory.
 
 
 License
