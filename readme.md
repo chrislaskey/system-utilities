@@ -12,6 +12,33 @@ Helps a lot when deploying virtual machines, especially since I prefer fresh
 installs and automated deployment instead of backups and golden images. Testing in
 Debian Squeeze (6.0+) and Ubuntu Server (10.04+).
 
+update-gitmodules.sh
+--------------------------------------------------------------------------------
+
+The `git submodule` command makes it easy to update all submodules with a 
+call to `git submodule -q foreach git pull -q origin master`.
+
+But this only applies to submodules, that is situations where git repositories
+are part of one larger repository. When deploying with Puppet modules I ran
+into a the situation where it was not optimal to include all modules into
+one umbrella repository, which made `git submodule` unusable.
+
+This script accomplishes the same goal by searching for all `.git` directories
+within a base directory, and updating each repository based on `branch` and
+`remote` arguments.
+
+Usage:
+
+```sh
+/update-gitmodules.sh -d <base_dir> -r <remote name> -b <branch name>
+# And with real world variables:
+/update-gitmodules.sh -d /vagrant/puppet/modules -r github -b stable
+```
+
+The real world example would go to `/vagrant/puppet/modules` and execute
+`git pull github stable:stable` in each repository root.
+
+
 License
 ================================================================================
 
