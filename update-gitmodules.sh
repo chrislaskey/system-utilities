@@ -84,6 +84,13 @@ verify_base_dir () {
 	fi
 }
 
+verify_base_dir_is_absolute () {
+	local original_pwd=`pwd`
+	cd "$base_dir"
+	base_dir=`pwd`
+	cd "$original_pwd"
+}
+
 find_git_directories () {
 	_git_dirs=`find ${base_dir} -type d -name .git`
 
@@ -122,5 +129,6 @@ update_each_repository () {
 # Application execution
 
 verify_base_dir
+verify_base_dir_is_absolute
 find_git_directories
 update_each_repository
