@@ -78,7 +78,7 @@ before_exit () {
 
 # Application functions
 
-verify_base_dir () {
+verify_base_dir_exists () {
 	if [[ ! -d "$base_dir" ]]; then
 		error "The base directory does not exist, '${base_dir}'"
 	fi
@@ -128,7 +128,7 @@ update_each_repository () {
 
 # Application execution
 
-verify_base_dir
+verify_base_dir_exists
 verify_base_dir_is_absolute
 find_git_directories
 update_each_repository
