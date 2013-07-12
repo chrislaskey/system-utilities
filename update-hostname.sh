@@ -51,7 +51,7 @@ before_exit () {
 
 verify_root_privileges () {
 	if [[ $EUID -ne 0 ]]; then
-		fail "Requires root privileges."
+		error "Requires root privileges."
 	fi
 }
 
@@ -69,13 +69,13 @@ verify_input () {
 
 update_live_hostname () {
 	if ! hostname "${new_hostname}"; then
-		fail "Failed to update live hostname value using the hostname command."
+		error "Failed to update live hostname value using the hostname command."
 	fi
 }
 
 update_hostname_file () {
 	if ! echo "${new_hostname}" > /etc/hostname; then
-		fail "Failed to update hostname file: /etc/hostname."
+		error "Failed to update hostname file: /etc/hostname."
 	fi
 }
 
@@ -87,11 +87,11 @@ update_hosts_file () {
 
 	if ! sed -i"_backup" -e "s/${current_fqdn}/NEW_FQDN/g" -e "s/${current_hostname}/NEW_HOSTNAME/g" /etc/hosts; then
 		cp /etc/hosts_backup /etc/hosts
-		fail "Failed to update hosts file: /etc/hosts"
+		error "Failed to update hosts file: /etc/hosts"
 	fi
 
 	if ! sed -i'' -e "s/NEW_FQDN/${new_fqdn}/g" -e "s/NEW_HOSTNAME/${new_hostname}/g" /etc/hosts; then
-		fail "Failed to update hosts file: /etc/hosts"
+		error "Failed to update hosts file: /etc/hosts"
 	fi
 }
 
