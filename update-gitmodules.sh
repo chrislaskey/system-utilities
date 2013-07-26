@@ -108,7 +108,7 @@ _update_repository () {
 	fi
 
 	if ! git pull "$git_remote" "$git_branch":"$git_branch" ; then
-		error "Unable to update git directory 'git pull {$git_remote} ${git_branch}:{$git_branch}'"
+		error "Unable to update git directory 'git pull ${git_remote} ${git_branch}:${git_branch}'"
 	fi
 
 	echo $git_repo_base_dir
