@@ -19,8 +19,10 @@ kernel_rules="/etc/udev/rules.d/70-persistent-net.rules"
 eth0_cfg="/etc/sysconfig/network-scripts/ifcfg-eth0"
 
 init_file="/etc/rc.d/init.d/fixVirtualMachineNetworking.sh"
-init_up="/etc/rc0.d/S12fixVirtualMachineNetworking.sh"
-init_down="/etc/rc6.d/S12fixVirtualMachineNetworking.sh"
+init_rc0="/etc/rc0.d/S12fixVirtualMachineNetworking.sh"
+init_rc3="/etc/rc3.d/S12fixVirtualMachineNetworking.sh"
+init_rc5="/etc/rc5.d/S12fixVirtualMachineNetworking.sh"
+init_rc6="/etc/rc6.d/S12fixVirtualMachineNetworking.sh"
 
 # Fix networking files
 
@@ -40,10 +42,18 @@ if ! test -f "$init_file"; then
 	mv "$0" "$init_file"
 fi
 
-if ! test -L "$init_up"; then
-	ln -s "$init_file" "$init_up"
+if ! test -L "$init_rc0"; then
+	ln -s "$init_file" "$init_rc0"
 fi
 
-if ! test -L "$init_down"; then
-	ln -s "$init_file" "$init_down"
+if ! test -L "$init_rc3"; then
+	ln -s "$init_file" "$init_rc3"
+fi
+
+if ! test -L "$init_rc5"; then
+	ln -s "$init_file" "$init_rc5"
+fi
+
+if ! test -L "$init_rc6"; then
+	ln -s "$init_file" "$init_rc6"
 fi
