@@ -39,6 +39,14 @@ The real world example would go to `/vagrant/puppet/modules` and execute
 `git pull github stable:stable` from each git repository root within the
 `/vagrant/puppet/modules/*` root directory.
 
+Puppet Utilities
+--------------------------------------------------------------------------------
+
+### bootstrap-puppetmaster.sh ###
+
+Adds the Puppet Labs official package repository, then installs the latest
+puppetmaster and puppetdb packages.
+
 
 License
 ================================================================================
