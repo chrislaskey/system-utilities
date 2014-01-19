@@ -47,6 +47,10 @@ Puppet Utilities
 Adds the Puppet Labs official package repository, then installs the latest
 puppetmaster and puppetdb packages.
 
+### recreate-ssl-certs.sh ###
+
+Recreates SSL certs on a Puppet Master. Includes syncing PuppetDB SSL certs too.
+
 
 License
 ================================================================================
