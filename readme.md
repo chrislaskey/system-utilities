@@ -51,11 +51,18 @@ puppetmaster and puppetdb packages.
 
 Recreates SSL certs on a Puppet Master. Includes syncing PuppetDB SSL certs too.
 
-### truncate-puppetdb.sh ###
+### puppetdb-truncate.sh ###
 
 Clear all data from an existing PuppetDB installation. Creates a data dump prior
 to truncating all tables. Useful for early versions of PuppetDB which can
 sometimes store stale data indefinitely.
+
+### puppetdb-drop.sh ###
+
+Remove all PuppetDB database tables. Useful for early versions of PuppetDB
+which can sometimes stall at service start trying to execute a `CREATE TABLE`
+command. Due to the highly destructive nature of the script, it requires
+the user to pass the `--force` flag to execute.
 
 
 License
